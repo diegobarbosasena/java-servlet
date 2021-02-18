@@ -26,6 +26,12 @@ public class NewCompanyServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String companyName = request.getParameter("companyName");
 
+		Company company = new Company();
+		company.setName(companyName);
+
+		FakeDataBase fakeDataBase = new FakeDataBase();
+		fakeDataBase.save(company);
+
 		PrintWriter out = response.getWriter();
 		out.println("<html> <body>");
 		out.println("<h2> " + companyName + " company successfully registered </h2>");
