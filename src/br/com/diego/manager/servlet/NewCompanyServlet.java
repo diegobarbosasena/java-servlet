@@ -1,8 +1,8 @@
 package br.com.diego.manager.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,9 +32,8 @@ public class NewCompanyServlet extends HttpServlet {
 		FakeDataBase fakeDataBase = new FakeDataBase();
 		fakeDataBase.save(company);
 
-		PrintWriter out = response.getWriter();
-		out.println("<html> <body>");
-		out.println("<h2> " + companyName + " company successfully registered </h2>");
-		out.println("</body> </html>");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/new-company-created.jsp");
+		request.setAttribute("company", company.getName());
+		dispatcher.forward(request, response);
 	}
 }

@@ -1,9 +1,9 @@
 package br.com.diego.manager.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,18 +25,13 @@ public class ListCompanyServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		FakeDataBase fakeDataBase = new FakeDataBase();
+
 		List<Company> companies = fakeDataBase.getCompanies();
 
-		PrintWriter out = response.getWriter();
+		request.setAttribute("companies", companies);
 
-		out.println("<html> <body>");
-		out.println("<ul>");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/companies.jsp");
+		dispatcher.forward(request, response);
 
-		for (Company company : companies) {
-			out.println("<li>" + company.getName() + "</li>");
-		}
-
-		out.println("</ul>");
-		out.println("</html> </body>");
 	}
 }
