@@ -3,25 +3,23 @@
 
 <%@ page import="java.util.List, br.com.diego.manager.servlet.Company"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Companies</title>
+<title>Java Standard Tag Library</title>
 </head>
 <body>
 
-	<h2>Companies </h2>
-	
+	<h2>Companies</h2>
+
 	<ul>
-		<%
-			List<Company> companies = (List<Company>) request.getAttribute("companies");
-			for (Company company : companies) {
-		%>
-			<li><%=company.getName()%></li>
-		<%
-			}
-		%>
+		<c:forEach items="${companies }" var="company">
+			<li>${company.name } <fmt:formatDate value="${ company.openingDate }" pattern="dd/MM/yyyy"/> </li>
+		</c:forEach>
 	</ul>
 
 </body>

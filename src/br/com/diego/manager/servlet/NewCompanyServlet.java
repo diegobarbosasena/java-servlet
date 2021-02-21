@@ -1,6 +1,9 @@
 package br.com.diego.manager.servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,9 +28,20 @@ public class NewCompanyServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String companyName = request.getParameter("companyName");
+		String paramOpeningDate = request.getParameter("openingDate");
+
+		Date openingDate = null;
+
+		try {
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+			openingDate = format.parse(paramOpeningDate);
+		} catch (ParseException e) {
+			throw new ServletException(e);
+		}
 
 		Company company = new Company();
 		company.setName(companyName);
+		company.setOpeningDate(openingDate);
 
 		FakeDataBase fakeDataBase = new FakeDataBase();
 		fakeDataBase.save(company);

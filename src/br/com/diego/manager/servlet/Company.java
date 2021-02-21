@@ -1,9 +1,12 @@
 package br.com.diego.manager.servlet;
 
+import java.util.Date;
+
 public class Company {
 
 	private Integer id;
 	private String name;
+	private Date openingDate = new Date();
 
 	public Integer getId() {
 		return id;
@@ -19,5 +22,13 @@ public class Company {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Date getOpeningDate() {
+		return openingDate;
+	}
+
+	public void setOpeningDate(Date openingDate) {
+		this.openingDate = openingDate;
 	}
 }
