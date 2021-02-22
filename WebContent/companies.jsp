@@ -14,6 +14,10 @@
 </head>
 <body>
 
+	<c:if test="${ not empty company }">	
+		<h2>${ company } company successfully registered</h2>
+	</c:if>
+
 	<h2>Companies</h2>
 
 	<ul>
