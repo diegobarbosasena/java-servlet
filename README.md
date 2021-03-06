@@ -1,4 +1,4 @@
-# Java Servlet
+# Java Servlet: Fundamentos da programação web Java
 
 Curso de [Java Servlet](https://www.alura.com.br/curso-online-servlets-fundamentos-programacao-web-java) da [Alura](https://www.alura.com.br).
 
